@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Dashboard</title>
+    <style>
+        body {
+            background-color: #1f1f1f;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ff4646;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 60%; /* Reduced width */
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #555;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        th, td {
+            border: 1px solid #555;
+            padding: 10px; /* Reduced padding */
+            background-color: #333;
+            font-size: 14px; /* Reduced font size */
+        }
+
+        th {
+            background-color: #222;
+            color: #ff4646;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hacker Dashboard</h1>
+
+    <!-- Display the collected data in a table -->
+    {% for item in data %}
+    <table>
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in item.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    {%if key == 'location'%}
+                     <td>
+                            <iframe width="50%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+                            src="https://maps.google.com/maps?q=31.5072204,76.8836149&amp;z=4&amp;output=embed">
+                            </iframe>
+                     </td>
+                    {%else%}
+                    <td>{{ value }}</td>
+                    {%endif%}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+
+</body>
+</html>

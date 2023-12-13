@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Display</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .feedback-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 600px; /* Increased width */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px; /* Increased margin */
+            padding: 20px; /* Increased padding */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .feedback-info {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        #refreshButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #refreshButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            document.cookie = "userName = EthicalHacker"
+            document.cookie = "password = StrongPassword@123"
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="feedback-container">
+        <h1>Feedback Display</h1>
+        <ul id="feedbackList">
+        </ul>
+        <button id="refreshButton">Refresh Feedback</button>
+
+        <script>
+            function refreshFeedback() {
+                $.ajax({
+                    url: '/get_feedback',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (feedbackData) {
+                        displayFeedback(feedbackData);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error fetching feedback:', status, error);
+                    }
+                });
+            }
+
+            function displayFeedback(feedbackData) {
+                console.log(feedbackData)
+                var feedbackList = $('#feedbackList');
+                feedbackList.empty(); 
+
+                $.each(feedbackData, function (index, feedback) {
+                    var listItem = $('<li>').html(`
+                        <div class="feedback-info">
+                            <strong>Name:</strong> ${feedback[0]}<br>
+                            <strong>Email:</strong> ${feedback[1]}
+                        </div>
+                        <p>${feedback[2]}</p>
+                    `);
+                    feedbackList.append(listItem);
+                });
+            }
+            
+            $(document).ready(function () {
+                refreshFeedback();
+            });
+
+            $('#refreshButton').click(function () {
+                refreshFeedback();
+            });
+        </script>
+    </div>
+</body>
+</html>

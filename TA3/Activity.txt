@@ -1,0 +1,50 @@
+1. Run Flask feedback app
+2. Run hacker dashboard app.
+
+3. Code in the flask app.py tp check for user input
+   a. use jinja to add show the data
+   b. if using ajax then make sure user data is shown as text and not as inner html
+   
+4. See if the website's vulnerability is fixed.
+
+
+Protecting against JavaScript injection (also known as Cross-Site Scripting or XSS) is crucial for web security. Here are various methods to prevent JavaScript injection:
+
+Input Validation:
+Validate and sanitize user input on both the client and server sides.
+Use server-side validation to reject any input that doesn't meet expected criteria.
+
+Output Encoding:
+Encode user-generated content before rendering it in HTML. Use proper encoding functions such as htmlspecialchars() in PHP or similar in other languages.
+
+Content Security Policy (CSP):
+Implement a Content Security Policy header to restrict the types of content that can be loaded on a page.
+Define a policy that prevents the execution of inline scripts and limits the domains from which scripts can be loaded.
+
+Use HTTP Only and Secure Flags for Cookies:
+Set the HTTP Only flag on cookies to prevent them from being accessed through JavaScript.
+Use the Secure flag to ensure that cookies are only sent over HTTPS connections.
+
+Escape User Input in Templates:
+When rendering dynamic content in templates, make sure to escape variables to prevent them from being interpreted as code.
+
+Use Frameworks with Built-in Security Features:
+Choose web development frameworks that have built-in security features to help prevent common vulnerabilities, including XSS.
+
+Regular Security Audits:
+Regularly perform security audits of your web application's codebase to identify and fix potential vulnerabilities.
+
+Update Libraries and Dependencies:
+Keep all libraries and dependencies up-to-date to benefit from security patches and fixes.
+
+Parameterized Statements for Database Queries:
+Use parameterized queries or prepared statements when interacting with databases to prevent SQL injection attacks, which can lead to XSS vulnerabilities.
+
+User Authentication and Authorization:
+Implement strong user authentication and authorization mechanisms to ensure that users have the necessary permissions to perform actions.
+
+Educate Developers and Users:
+Train developers to write secure code and educate users about the risks of clicking on untrusted links or entering sensitive information on unfamiliar websites.
+
+Browser Security Headers:
+Implement security headers, such as X-Content-Type-Options and X-Frame-Options, to enhance the security posture of your web application.
